@@ -37,3 +37,59 @@ The client for this API is a car dealer who has provided the following specs:
 - Add seed data to the database using `knex seeds`
 - Add `UPDATE` and `DELETE` operations to your API.
 - Write a schema file for a `sales` table. This table should track information on the sale of each car. You may wish to research `foreign keys` in order to link each sale to the entry in `cars` which sold.
+
+---
+
+### Let's Do This
+
+- `npm i knex sqlite3`
+
+#### 1. Configure `knex` to connect to a `/data/car-dealer.db3` database using the `sqlite3` npm module
+
+- `knex init`
+
+- configure development in [knexfile.js](knexfile.js)
+
+#### 2. Using knex migrations, design and write a schema for the cars table using the specifications
+
+- `knex migrate:make create_cars_table`
+
+  - write schema in migrations_folder >> [created_table](./migrations/20200812092802_create_cars_table.js)
+
+- create data :open_file_folder: for knexfile configuration so the migrate:latest knows where to put files
+
+  - we specified `./data/car-dealer.db3` in knexfile.js development config)
+
+- `knex migrate:latest`
+
+  - Open car-dealer.db3 in SQLiteStudio :eyes:
+
+- set up seeds :arrow_down:
+
+```javascript
+//  << knexfile.js >>
+development: {
+  // --> add this <--
+  seeds: {
+    directory: "./data/seeds",
+  },
+},
+```
+
+- `knex seed:make 001-cars`
+  - this will create :open_file_folder: seeds >> [001-cars.js](data/seeds/001-cars.js)
+  - update file accordingly
+- `knex seed:run`
+- check SQLiteStudio to see if data is there :eyes:
+
+#### 3. Write endpoints to support `CREATE` and `READ` operations on the `cars` resource
+
+- `npm i helmet morgan express -D nodemon`
+
+- `npm touch index.js`
+  - [index.js](index.js)
+
+- :open_file_folder: api
+
+  - [server.js](api/server.js)
+  - :open_file_folder: cars >> [cars-router.js](api/cars/cars-router.js)
