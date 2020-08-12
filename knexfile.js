@@ -7,6 +7,9 @@ module.exports = {
       filename: "./data/car-dealer.db3", // [1a]
     },
     useNullAsDefault: true, // [1b]
+    seeds: {
+      directory: "./data/seeds",
+    },
   },
 
   staging: {
