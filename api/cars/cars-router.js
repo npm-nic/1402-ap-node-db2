@@ -6,7 +6,7 @@ carsRouter.get("/hello", (req, res) => {
   res.status(200).json({ hello: "world" });
 });
 
-// // --> GET api/cars/ <-- // //
+// // --> GET api/cars <-- // //
 carsRouter.get("/", (req, res) => {
   db.select("*")
     .from("cars")
@@ -20,13 +20,33 @@ carsRouter.get("/", (req, res) => {
     });
 });
 
-// // --> POST api/cars/ <-- // //
+// // --> GET api/cars/:id <-- // //
+carsRouter.get("/:id", (req, res) => {
+  const req_id = req.params.id;
+
+  db.select("*")
+    .from("cars")
+    .where("id", req_id)
+    .then((car) => {
+      car.length > 0
+        ? res.status(200).json({ car })
+        : res.status(404).json({ message: `no car with id: ${req_id}` });
+    })
+    .catch((err) => {
+      err.message
+        ? res.status(500).json({ error: err.message })
+        : res.status(500).json({ message: "its not you, its me 💔" });
+    });
+});
+
+// // --> POST api/cars <-- // //
 carsRouter.post("/", (req, res) => {
   const car = req.body;
 
   db("cars")
     .insert(car)
-    .returning("id")    .then((added_id) => {
+    .returning("id")
+    .then((added_id) => {
       added_id
         ? res.status(201).json({ added_id })
         : res

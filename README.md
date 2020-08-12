@@ -57,6 +57,7 @@ The client for this API is a car dealer who has provided the following specs:
   - write schema in migrations_folder >> [created_table](./migrations/20200812092802_create_cars_table.js)
 
 - create data :open_file_folder: for knexfile configuration so the migrate:latest knows where to put files
+
   - we specified `./data/car-dealer.db3` in knexfile.js development config)
 
 - `knex migrate:latest`
@@ -85,7 +86,8 @@ development: {
 
 - `npm i helmet morgan express -D nodemon`
 
-`npm touch index.js`
+- `npm touch index.js`
+  - [index.js](index.js)
 
 - :open_file_folder: api
 
