@@ -54,4 +54,8 @@ configure development in [knexfile.js](knexfile.js)
 
 write schema in migrations_folder >> [created_table](./migrations/20200812092802_create_cars_table.js)
 
-create `data` folder for configuration (above)
+create :open_file_folder: `data` for knexfile configuration (above)
+
+`knex migrate:latest`
+
+:eyes: Open car-dealer.db3 in SQLiteStudio :eyes:
