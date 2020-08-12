@@ -47,3 +47,11 @@ The client for this API is a car dealer who has provided the following specs:
 `knex init`
 
 configure development in [knexfile.js](knexfile.js)
+
+#### Using knex migrations, design and write a schema for the cars table using the specifications
+
+`knex migrate:make create_cars_table`
+
+write schema in migrations_folder >> [created_table](./migrations/20200812092802_create_cars_table.js)
+
+create `data` folder for configuration (above)
