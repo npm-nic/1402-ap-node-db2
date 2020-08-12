@@ -59,3 +59,14 @@ create :open_file_folder: `data` for knexfile configuration (above)
 `knex migrate:latest`
 
 :eyes: Open car-dealer.db3 in SQLiteStudio :eyes:
+
+#### Write endpoints to support `CREATE` and `READ` operations on the `cars` resource
+
+`npm i helmet morgan express -D nodemon`
+
+`npm touch index.js`
+
+:open_file_folder: api
+
+- [server.js](api/server.js)
+- :open_file_folder: cars >> [cars-router.js](api/cars/cars-router.js)
