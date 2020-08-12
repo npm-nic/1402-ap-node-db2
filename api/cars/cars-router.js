@@ -26,10 +26,9 @@ carsRouter.post("/", (req, res) => {
 
   db("cars")
     .insert(car)
-    .returning("id")
-    .then((added_ids) => {
-      added_ids
-        ? res.status(201).json({ added_ids })
+    .returning("id")    .then((added_id) => {
+      added_id
+        ? res.status(201).json({ added_id })
         : res
             .status(201)
             .json({ message: "thats weird...no added_ids to give ya" });
