@@ -86,7 +86,7 @@ development: {
 
 - `npm i helmet morgan express -D nodemon`
 
-- `npm touch index.js`
+- `touch index.js`
   - [index.js](index.js)
 
 - :open_file_folder: api
